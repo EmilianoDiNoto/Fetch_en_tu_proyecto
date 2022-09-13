@@ -12,17 +12,20 @@ class divisas {
         if (this.moneda == "dolar" && this.monto >= monedas.dolar) {
             montoFinal = this.monto / monedas.dolar;
             resultado = montoFinal.value;
+            toastAlert("Conversión completada exitosamente", "success", "top-end");
         }
         else if (this.moneda == "euro" && this.monto >= monedas.euro) {
             montoFinal = this.monto / monedas.euro;
             resultado = montoFinal.value;
+            toastAlert("Conversión completada exitosamente", "success", "top-end");
         }
         else if (this.moneda == "libra" && this.monto >= monedas.libra) {
             montoFinal = this.monto / monedas.libra;
             resultado = montoFinal.value;
+            toastAlert("Conversión completada exitosamente", "success", "top-end");
         }
         else if (this.monto < monedas.dolar || this.monto < monedas.euro || this.monto < monedas.libra) {
-            alert("El monto ingresado es insuficiente, por favor ingrese nuevamente");
+            toastAlert("El monto ingresado no fue suficiente para realizar la conversion", "warning", "top-start")
         }
     }
 }

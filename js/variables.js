@@ -16,42 +16,37 @@ const toastAlert = (mensaje, icono, posicion) => {
         text: mensaje,
     })
 }
-    
+
 btnAceptar.addEventListener("click", CapturarDatos);
 btnConvertir.addEventListener("click", verEstadisticas);
 
 function CapturarDatos() {
+    debugger
 
-    if (monto.value != "" && moneda.value != "")
-    {
-    const eleccion = moneda.value.toLowerCase();
-    const ingreso = new divisas(monto.value, eleccion);
-    ingreso.conversion();
+    if (monto.value != "" && moneda.value != "") {
+        const eleccion = moneda.value.toLowerCase();
+        const ingreso = new divisas(monto.value, eleccion);
+        ingreso.conversion();
 
-    conversiones.push(new divisas(monto.value, moneda.value));
-    localStorage.setItem("conversiones", JSON.stringify(conversiones));
+        conversiones.push(new divisas(monto.value, moneda.value));
+        localStorage.setItem("conversiones", JSON.stringify(conversiones));
 
-    moneda.value = "";
-    monto.value = "";
+        moneda.value = "";
+        monto.value = "";
 
-    moneda.focus();
+        moneda.focus();
 
-    console.log(recuperarDatosdeLS());
-// Aquí utilicé la alerta para que se disparé cuando la conversión fue exitosa.
-    toastAlert("Conversión completada exitosamente", "success", "top-end");
+        console.log(recuperarDatosdeLS());
     }
-    else
-    {
-// Aquí utilicé una alerta para que se dispare cuando los campos estan incompletos y no pueda hacerse la conversion.
-    toastAlert("Por favor, asegurese de completar todos los campos", "warning", "top-start");
+    else {
+        // Aquí utilicé una alerta para que se dispare cuando los campos estan incompletos y no pueda hacerse la conversion.
+        toastAlert("Por favor, asegurese de completar todos los campos", "warning", "top-start");
     }
 }
 
-function recuperarDatosdeLS() 
-{
-    if (localStorage.conversiones)
-    {
-        const converGuardados =JSON.parse(localStorage.getItem("conversiones"))
+function recuperarDatosdeLS() {
+    if (localStorage.conversiones) {
+        const converGuardados = JSON.parse(localStorage.getItem("conversiones"))
         console.table(converGuardados);
     }
 }
